@@ -1,0 +1,14 @@
+{
+    "data_directory": ".\\datalake\\",
+
+    "fitting": {
+        "_comments": "`from`, `to` and lambda0 in nm",
+        "from": 500.0,
+        "to": 900.0,
+        "lambda0": 600.0,
+        "initial_guess":{
+            "mu_0": 0.3,
+            "b": 3.0
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "_comments" : "All the input parameters are gathered in here.",
+    
+    "data_directory": ".\\datalake\\",
+    
+    "beam_profile": {
+        "px_size": 5.3e-4,
+        "width_method": "fwhm",
+        "fileName": "p001L976S1.png"
+    }
+} 

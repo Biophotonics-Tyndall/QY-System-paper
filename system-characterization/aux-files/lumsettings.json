@@ -1,0 +1,38 @@
+{
+    "_comments" : "All the input parameters are gathered in here.",
+    
+    "data_directory": ".\\datalake\\",
+    
+    "beam_profile": {
+        "px_size": 5.3e-4,
+        "width_method": "fwhm"
+    },
+
+    "system": {
+        "filter_transmitance976": 0.8387,
+        "filter_transmitance785": 0.35
+    },
+
+    "ucnp": {
+        "scattering": 0.0
+    },
+    
+    "dye": {
+        "scattering": 0.0
+    },
+
+    "fitting": {
+        "two_photon_model":{
+            "saturation_guess": 0.05,
+            "balancing_point": 14000.1
+        },
+        
+        "three_photon_model":{
+            "saturation_guess": 0.05,
+            "balancing_point1": 14000.0,
+            "balancing_point2": 14000.1
+
+        }
+    }
+}
+   

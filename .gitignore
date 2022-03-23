@@ -1,0 +1,18 @@
+# ignore data files
+quantum-yield/data/*
+!quantum-yield/data/README.md
+!quantum-yield/data/README.html
+system-characterization/datalake/*
+!system-characterization/datalake/README.md
+
+# vscode configs
+*/.vscode/
+
+# jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# virtual environment
+*venv/
+
+# pycache
+__pycache__/

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Data folder</title>
+        <style>
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="data-folder">Data folder</h1>
+<p>All acquired data is save in the <a href="./raw-data">raw-data</a> folder with name in the following format: <strong><em>qy_date_timeID.csv</em></strong>. All the details of the experiments are logged into the <a href="datalogs.csv">datalogs</a> file and one can relate the specific data file to its log details by file name and <em>saved_name</em> column. The <a href="metadata.csv">metadata</a> file contains all the details regarding the columns of the saved data.</p>
+<table>
+<thead>
+<tr>
+<th>field_name</th>
+<th>data_type</th>
+<th>data_format</th>
+<th>example</th>
+<th>standard_units</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time</td>
+<td>float</td>
+<td>^([0-9]?.|[1-9][\d]<em>.)[0-9]</em>$</td>
+<td>123423.982734</td>
+<td>seconds</td>
+<td>Positive float number for time acquired with python using the OS clock</td>
+</tr>
+<tr>
+<td>0</td>
+<td>float</td>
+<td>^[-]?([0-9]?.|[1-9][\d]<em>.)[0-9]</em>$</td>
+<td>-1.99834</td>
+<td>volts</td>
+<td>Daq input channel</td>
+</tr>
+<tr>
+<td>1</td>
+<td>float</td>
+<td>^[-]?([0-9]?.|[1-9][\d]<em>.)[0-9]</em>$</td>
+<td>-1.99834</td>
+<td>volts</td>
+<td>Daq input channel</td>
+</tr>
+<tr>
+<td>2</td>
+<td>float</td>
+<td>^[-]?([0-9]?.|[1-9][\d]<em>.)[0-9]</em>$</td>
+<td>-1.99834</td>
+<td>volts</td>
+<td>Daq input channel</td>
+</tr>
+</tbody>
+</table>
+<p>Beam profile folder and equipment calibration folders contain images of the beam profile and csv data file used to calibrate the analog output of the power meter.</p>
+
+    </body>
+    </html>
