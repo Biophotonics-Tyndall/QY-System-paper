@@ -7,7 +7,7 @@ This code is Matlab (v. R2019b) based used to analyse data acquired with the QY 
 
 ## How to run
 
-All the equations and data treatment are made with the classes in the *./loaders/* folder. The scripts in the root path are simplified scripts that uses the main classes.  
+All the equations and data treatment are made with the classes in the [loaders](./loaders/) folder. The scripts in the root path are simplified scripts that uses the main classes.  
 
 To generate the final figures (Fig. 3 and Fig. 4) the following scripts must be run in following order:
 

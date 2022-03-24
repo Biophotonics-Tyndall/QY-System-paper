@@ -1,118 +1,51 @@
 <!DOCTYPE html>
     <html>
     <head>
-        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <meta charset="UTF-8">
         <title>Quantum Yield Analysis</title>
+        <style>
+</style>
         
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-        
-        <style>
-.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
-</style>
-        <style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
             body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
                 font-size: 14px;
                 line-height: 1.6;
             }
         </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
         
         
     </head>
-    <body>
+    <body class="vscode-body vscode-light">
         <h1 id="quantum-yield-analysis">Quantum Yield Analysis</h1>
-<p>This code is working for Tm samples at <code>800 nm</code> emission.</p>
+<p><strong>Author</strong>: Jean Matias <br>
+<strong>Email</strong>: <a href="mailto:jean.matias@tyndall.ie">jean.matias@tyndall.ie</a></p>
+<p>This code is Matlab (v. R2019b) based used to analyse data acquired with the QY setup built in Tyndall National Institute.</p>
 <h2 id="how-to-run">How to run</h2>
-<p>The script consists on the main file (quantumyield.m), which make the complete analysis, and
-subfiles for partial analysis:</p>
+<p>All the equations and data treatment are made with the classes in the <a href="./loaders/">loaders</a> folder. The scripts in the root path are simplified scripts that uses the main classes.</p>
+<p>To generate the final figures (Fig. 3 and Fig. 4) the following scripts must be run in following order:</p>
+<ol>
+<li><strong>A-beamprofile.m</strong></li>
+<li><strong>B_quantumyield.m</strong></li>
+<li><strong>C_spectra.m</strong></li>
+<li><strong>D_emissionspectra.m</strong></li>
+<li><strong>E_autocorrelation.m</strong></li>
+<li><strong>F_makefigures.m</strong></li>
+</ol>
+<h2 id="folder-structure">Folder structure</h2>
 <ul>
-<li>spectra.m and spectra_ramansys.m</li>
-<li>beamprofile.m</li>
-<li>aucorrelation.m</li>
-<li>emissionspectra.m</li>
+<li><strong>datalake</strong> contains all the data used by the scripts,</li>
+<li><strong>plots</strong>, figures presented in the paper,</li>
+<li><strong>utils</strong> contains a class with useful equations,</li>
+<li><strong>loaders</strong>, classes which load, transform and plot data.</li>
+<li><strong>aux-files</strong>, json files with initial parameters consumed by the main scripts.</li>
 </ul>
-<p>The subfiles and the main file don't depend on each other but they call subclasses from the loader directory:</p>
-<ul>
-<li>SWEEP_MODE.m</li>
-<li>SPECTRA.m</li>
-<li>BEAM_PROFILE.m</li>
-<li>CORRELATION.m</li>
-<li>SPECRA_RAMANSYS.m</li>
-</ul>
-<!-- 
-## Files name (standardization)
 
-Save the files with following pattern:
-
-> E000USS.ext
-
-Where E000 stands for the experiment tag, ex.: e001, e002, ...
-U can be U or  -->
-<h2 id="input-files">Input files:</h2>
-<ul>
-<li>
-<p>Sweep (.csv or .txt): UCNP, its solvent (e.g.: water), Reference (Dye), its solvent</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Current (mA)</th>
-<th style="text-align:right">Power (uW)</th>
-<th style="text-align:right">APD (V)</th>
-<th>Pd Optical Power (uW)</th>
-<th>Set Current (mA)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">float</td>
-<td style="text-align:right">float</td>
-<td style="text-align:right">float</td>
-<td>float</td>
-<td>float</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p>Beam profile file (.png)</p>
-</li>
-</ul>
-<h2 id="methodology">Methodology</h2>
-<h3 id="luminescence-signal-%e2%86%92-lp">Luminescence signal → L(P)</h3>
-<blockquote>
-<p>L<sub>ucnp</sub>(P) = L<sub>mix</sub>(P) - L<sub>solvent</sub>(P) </br>
-L<sub>dye</sub>(P) = L<sub>mix</sub>(P) - L<sub>solvent</sub>(P)</p>
-</blockquote>
-<h2 id="absorbance-%e2%86%92-%ce%bcsubasub">Absorbance → μ<sub>a</sub></h2>
-<!-- <img src="https://latex.codecogs.com/png.latex?\large\mu_a"/> -->
-<blockquote>
-<p>mu<sub>a</sub> = ln(P<sub>o</sub> / P)</p>
-</blockquote>
-<!-- <img src="https://latex.codecogs.com/png.latex?\mu_a&space;=&space;ln\left&space;(&space;\frac{P_o}{P}&space;\right)" title="\mu_a = ln\left ( \frac{P_o}{P} \right)" /> -->
-<h2 id="power-at-the-centre-of-the-cuvette-%e2%86%92-psubcsub">Power at the centre of the cuvette → P<sub>c</sub></h2>
-<!-- ![P_c = P.\sqrt{e^{\mu_a}}](https://latex.codecogs.com/png.latex?%5Clarge%20P_c%20%3D%20P.%5Csqrt%7Be%5E%7B%5Cmu_a%7D%7D) -->
-<blockquote>
-<p>P<sub>c</sub> = P × sqrt(e<sup>μ<sub>a</sub></sup>)</p>
-</blockquote>
-<h2 id="absorbed-power-at-the-centre-%e2%86%92-absubcsub">Absorbed power at the centre → Ab<sub>c</sub></h2>
-<blockquote>
-<p>Ab<sub>c</sub> = μ<sub>a</sub> . P<sub>c</sub></p>
-</blockquote>
-<h2 id="experimental-quantum-yield-%e2%86%92-%cf%86subexpsub">Experimental Quantum Yield → φ<sub>exp</sub></h2>
-<blockquote>
-<p>φ<sub>exp</sub> = L<sub>ucnp</sub>(P) / Ab<sub>c</sub></p>
-</blockquote>
-<h2 id="relative-quantum-yield-%e2%86%92-%cf%86p">Relative Quantum Yield → φ(P)</h2>
-<blockquote>
-<p>φ(P) =</p>
-</blockquote>
-<hr>
-<!-- ## Loaders
-
-### [SWEEP_MODE.m](./loaders/SWEEP_MODE.m)
-
-**Figures list**: 
-+ 100 &rarr; example -->
     </body>
     </html>
